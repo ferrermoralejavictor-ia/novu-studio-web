@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f0f0f0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 16px;
+  }
+  h2 {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 400;
+  }
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 48px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  }
+  .card.dark { background: #0d0d0d; }
+  .card.mid { background: #0f3460; }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .name {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #0d0d0d;
+    line-height: 1;
+  }
+  .dark .name, .mid .name { color: white; }
+  .sub {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #aaa;
+    font-weight: 400;
+  }
+  .dark .sub { color: #555; }
+  .mid .sub { color: rgba(255,255,255,0.4); }
+
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  button {
+    background: #0f3460;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s;
+  }
+  button:hover { opacity: 0.85; }
+  button.outline {
+    background: white;
+    color: #0f3460;
+    border: 1.5px solid #0f3460;
+  }
+</style>
+</head>
+<body>
+
+<h2>Novu Studio — Logo Final</h2>
+
+<!-- LIGHT -->
+<div class="card" id="card-light">
+  <div class="logo">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="11" fill="#0f3460"/>
+      <path d="M13 35V13L24 30V13" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M24 35V13L35 30" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="wordmark">
+      <div class="name">NOVU</div>
+      <div class="sub">Studio</div>
+    </div>
+  </div>
+</div>
+
+<!-- DARK -->
+<div class="card dark" id="card-dark">
+  <div class="logo dark">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="11" fill="#0f3460"/>
+      <path d="M13 35V13L24 30V13" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M24 35V13L35 30" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="wordmark">
+      <div class="name">NOVU</div>
+      <div class="sub">Studio</div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLO ICONO -->
+<div class="card" id="card-icon" style="padding: 40px;">
+  <svg width="80" height="80" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="48" height="48" rx="11" fill="#0f3460"/>
+    <path d="M13 35V13L24 30V13" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 35V13L35 30" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<div class="btn-row">
+  <button onclick="downloadSVG('light')">↓ SVG Fondo Claro</button>
+  <button onclick="downloadSVG('dark')">↓ SVG Fondo Oscuro</button>
+  <button onclick="downloadSVG('icon')">↓ SVG Solo Icono</button>
+  <button class="outline" onclick="downloadPNG('light')">↓ PNG Fondo Claro</button>
+  <button class="outline" onclick="downloadPNG('dark')">↓ PNG Fondo Oscuro</button>
+  <button class="outline" onclick="downloadPNG('icon')">↓ PNG Solo Icono</button>
+</div>
+
+<script>
+const svgs = {
+  light: `<svg width="240" height="72" viewBox="0 0 240 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="72" fill="white"/>
+  <rect x="12" y="12" width="48" height="48" rx="11" fill="#0f3460"/>
+  <path d="M25 55V17L36 42V17" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36 55V17L47 42" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="74" y="42" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="800" font-size="26" fill="#0d0d0d" letter-spacing="1">NOVU</text>
+  <text x="75" y="55" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" font-size="9" fill="#aaaaaa" letter-spacing="5">STUDIO</text>
+</svg>`,
+  dark: `<svg width="240" height="72" viewBox="0 0 240 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="72" fill="#0d0d0d"/>
+  <rect x="12" y="12" width="48" height="48" rx="11" fill="#0f3460"/>
+  <path d="M25 55V17L36 42V17" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36 55V17L47 42" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="74" y="42" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="800" font-size="26" fill="white" letter-spacing="1">NOVU</text>
+  <text x="75" y="55" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="400" font-size="9" fill="#555555" letter-spacing="5">STUDIO</text>
+</svg>`,
+  icon: `<svg width="80" height="80" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="11" fill="#0f3460"/>
+  <path d="M13 35V13L24 30V13" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 35V13L35 30" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`
+};
+
+function downloadSVG(type) {
+  const blob = new Blob([svgs[type]], { type: 'image/svg+xml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `novu-studio-${type}.svg`;
+  a.click();
+}
+
+function downloadPNG(type) {
+  const svg = svgs[type];
+  const img = new Image();
+  const blob = new Blob([svg], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(blob);
+  img.onload = () => {
+    const scale = 4;
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width * scale;
+    canvas.height = img.height * scale;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.drawImage(img, 0, 0);
+    const a = document.createElement('a');
+    a.download = `novu-studio-${type}.png`;
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+}
+</script>
+</body>
+</html>
